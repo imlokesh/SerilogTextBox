@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMLokesh.SerilogTextBox", "IMLokesh.SerilogTextBox\IMLokesh.SerilogTextBox.csproj", "{EA524968-46F7-4A05-A8A0-E901F08E34A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{B234A31D-1A0D-4AA9-80B5-7D1BEC333F4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMLokesh.SerilogTextBox.SampleApp", "Samples\IMLokesh.SerilogTextBox.SampleApp\IMLokesh.SerilogTextBox.SampleApp.csproj", "{4ED92CCB-DBC3-452E-AF7E-8A307F752158}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA524968-46F7-4A05-A8A0-E901F08E34A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA524968-46F7-4A05-A8A0-E901F08E34A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA524968-46F7-4A05-A8A0-E901F08E34A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA524968-46F7-4A05-A8A0-E901F08E34A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ED92CCB-DBC3-452E-AF7E-8A307F752158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ED92CCB-DBC3-452E-AF7E-8A307F752158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ED92CCB-DBC3-452E-AF7E-8A307F752158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ED92CCB-DBC3-452E-AF7E-8A307F752158}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4ED92CCB-DBC3-452E-AF7E-8A307F752158} = {B234A31D-1A0D-4AA9-80B5-7D1BEC333F4F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5EC532DD-484C-4302-8F18-15BD5BC192AC}
+	EndGlobalSection
+EndGlobal
