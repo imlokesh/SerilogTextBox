@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMLokesh.SerilogTextBox", "IMLokesh.SerilogTextBox\IMLokesh.SerilogTextBox.csproj", "{EA524968-46F7-4A05-A8A0-E901F08E34A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMLokesh.SerilogTextBox.SampleApp", "IMLokesh.SerilogTextBox.SampleApp\IMLokesh.SerilogTextBox.SampleApp.csproj", "{4ED92CCB-DBC3-452E-AF7E-8A307F752158}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMLokesh.SerilogTextBox.SampleApp", "Samples\IMLokesh.SerilogTextBox.SampleApp\IMLokesh.SerilogTextBox.SampleApp.csproj", "{4ED92CCB-DBC3-452E-AF7E-8A307F752158}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

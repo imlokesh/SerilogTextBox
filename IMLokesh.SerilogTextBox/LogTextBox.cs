@@ -11,13 +11,26 @@ public class LogTextBox : TextBox
         get { return (TextBoxSink)GetValue(TextBoxSinkProperty); }
         set { SetValue(TextBoxSinkProperty, value); }
     }
+
+    /// <summary>
+    /// If false, new log messages won't be written to the textbox. Log messages are still saved in the background and will be written when this is set as true. Default is true. 
+    /// </summary>
+    public bool IsActive
+    {
+        get { return (bool)GetValue(IsActiveProperty); }
+        set { SetValue(IsActiveProperty, value); }
+    }
+
     public static readonly DependencyProperty TextBoxSinkProperty = DependencyProperty.Register(nameof(TextBoxSink), typeof(TextBoxSink), typeof(LogTextBox), new PropertyMetadata(default(TextBoxSink), OnLogWriterPropertyChanged));
+
+    public static readonly DependencyProperty IsActiveProperty = DependencyProperty.Register(nameof(IsActive), typeof(bool), typeof(LogTextBox));
 
     public LogTextBox() : base()
     {
         TextWrapping = TextWrapping.WrapWithOverflow;
         VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
         AcceptsReturn = true;
+        IsActive = true;
     }
 
     protected override void OnGotFocus(RoutedEventArgs e)
@@ -44,6 +57,11 @@ public class LogTextBox : TextBox
         logWriter.LogMessages.CollectionChanged += (s, e) =>
         {
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Reset)
+            {
+                return;
+            }
+
+            if (!logTextBox.IsActive)
             {
                 return;
             }

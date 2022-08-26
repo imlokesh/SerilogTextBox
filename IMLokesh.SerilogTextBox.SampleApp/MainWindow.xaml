@@ -9,6 +9,7 @@
     Title="IMLokesh.SerilogTextBox.SampleApp"
     Width="800"
     Height="450"
+    d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
