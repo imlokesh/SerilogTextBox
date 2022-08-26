@@ -1,6 +1,4 @@
-﻿using Serilog;
-using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace IMLokesh.SerilogTextBox.SampleApp;
 
@@ -13,10 +11,5 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         DataContext = mainWindowViewModel;
-    }
-
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
-        Log.Debug(Guid.NewGuid().ToString());
     }
 }

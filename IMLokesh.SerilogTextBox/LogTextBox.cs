@@ -6,11 +6,15 @@ namespace IMLokesh.SerilogTextBox;
 
 public class LogTextBox : TextBox
 {
+    public static readonly DependencyProperty TextBoxSinkProperty = DependencyProperty.Register(nameof(TextBoxSink), typeof(TextBoxSink), typeof(LogTextBox), new PropertyMetadata(default(TextBoxSink), OnLogWriterPropertyChanged));
+
     public TextBoxSink TextBoxSink
     {
         get { return (TextBoxSink)GetValue(TextBoxSinkProperty); }
         set { SetValue(TextBoxSinkProperty, value); }
     }
+
+    public static readonly DependencyProperty IsActiveProperty = DependencyProperty.Register(nameof(IsActive), typeof(bool), typeof(LogTextBox));
 
     /// <summary>
     /// If false, new log messages won't be written to the textbox. Log messages are still saved in the background and will be written when this is set as true. Default is true. 
@@ -21,28 +25,35 @@ public class LogTextBox : TextBox
         set { SetValue(IsActiveProperty, value); }
     }
 
-    public static readonly DependencyProperty TextBoxSinkProperty = DependencyProperty.Register(nameof(TextBoxSink), typeof(TextBoxSink), typeof(LogTextBox), new PropertyMetadata(default(TextBoxSink), OnLogWriterPropertyChanged));
+    public static readonly DependencyProperty AlwaysAutoscrollProperty = DependencyProperty.Register(nameof(AlwaysAutoscroll), typeof(bool), typeof(LogTextBox));
 
-    public static readonly DependencyProperty IsActiveProperty = DependencyProperty.Register(nameof(IsActive), typeof(bool), typeof(LogTextBox));
+    /// <summary>
+    /// If true, the text box will autoscroll irrespective of the caret or scrollbar position. 
+    /// </summary>
+    public bool AlwaysAutoscroll
+    {
+        get { return (bool)GetValue(AlwaysAutoscrollProperty); }
+        set { SetValue(AlwaysAutoscrollProperty, value); }
+    }
 
     public LogTextBox() : base()
     {
-        TextWrapping = TextWrapping.WrapWithOverflow;
+        TextWrapping = TextWrapping.NoWrap;
         VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+        HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
         AcceptsReturn = true;
         IsActive = true;
     }
 
-    protected override void OnGotFocus(RoutedEventArgs e)
+    private bool IsScrolledToEnd()
     {
-        base.OnGotFocus(e);
-        CaretIndex = Text.Length;
+        return VerticalOffset + ViewportHeight == ExtentHeight;
     }
 
     private static void OnLogWriterPropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
     {
-        var logWriter = e.NewValue as TextBoxSink;
-        if (logWriter == null)
+        var textBoxSink = e.NewValue as TextBoxSink;
+        if (textBoxSink == null)
         {
             return;
         }
@@ -54,7 +65,7 @@ public class LogTextBox : TextBox
             return;
         }
 
-        logWriter.LogMessages.CollectionChanged += (s, e) =>
+        textBoxSink.LogMessages.CollectionChanged += (s, e) =>
         {
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Reset)
             {
@@ -66,20 +77,20 @@ public class LogTextBox : TextBox
                 return;
             }
 
-            lock (logWriter.SyncRoot)
+            lock (textBoxSink.SyncRoot)
             {
-                var text = string.Join("", logWriter.LogMessages.ToArray());
+                var text = string.Join("", textBoxSink.LogMessages.ToArray());
 
                 logTextBox.Dispatcher.Invoke(() =>
                 {
                     logTextBox.AppendText(text);
-                    if (logTextBox.CaretIndex == logTextBox.Text.Length)
+                    if (logTextBox.CaretIndex == logTextBox.Text.Length || !logTextBox.IsFocused || logTextBox.IsScrolledToEnd() || logTextBox.AlwaysAutoscroll)
                     {
                         logTextBox.ScrollToEnd();
                     }
                 });
 
-                logWriter.LogMessages.Clear();
+                textBoxSink.LogMessages.Clear();
             }
         };
     }
