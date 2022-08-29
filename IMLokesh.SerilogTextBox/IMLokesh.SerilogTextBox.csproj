@@ -4,11 +4,14 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>IMLokesh.SerilogTextBox</Title>
     <Authors>imlokesh</Authors>
-    <Description>Custom TextBox and Serilog Sink for writing log messages using Serilog.</Description>
+    <Description>A custom TextBox and Serilog Sink for writing log messages using Serilog in wpf. </Description>
     <Copyright>Copyright © 2022</Copyright>
+    <PackageProjectUrl>https://github.com/imlokesh/SerilogTextBox</PackageProjectUrl>
+    <PackageTags>serilog;wpf;textbox;autoscroll</PackageTags>
+    <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

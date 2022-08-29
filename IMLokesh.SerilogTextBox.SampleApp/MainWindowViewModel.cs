@@ -21,7 +21,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         while (!token.IsCancellationRequested)
         {
-            Log.Information(Guid.NewGuid().ToString() + Guid.NewGuid().ToString() + Guid.NewGuid().ToString() + Guid.NewGuid().ToString() + Guid.NewGuid().ToString() + Guid.NewGuid().ToString() + Guid.NewGuid().ToString() + Guid.NewGuid().ToString());
+            Log.Information(Guid.NewGuid().ToString());
             await Task.Delay(200, token).ContinueWith(t => { });
         }
     }
