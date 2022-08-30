@@ -72,7 +72,7 @@ public class LogTextBox : TextBox
                 return;
             }
 
-            if (!logTextBox.IsActive)
+            if (!logTextBox.Dispatcher.Invoke(() => logTextBox.IsActive))
             {
                 return;
             }
