@@ -14,15 +14,7 @@
     <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/imlokesh/SerilogTextBox</RepositoryUrl>
     <Version>1.0.2</Version>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\..\IMLokesh.Utilities\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Serilog" Version="2.11.0" />
